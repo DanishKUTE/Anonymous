@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AnonymousNigeria</title>
+
+    <audio id="songaudio" autoplay loop>
+        <source src="./anon.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+        </audio>
+
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./w3.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .w3-bar {
+            background-color: #000;
+            color: white;
+        }
+
+        .branding {
+            font-size: 20px;
+        }
+
+        .showcase {
+            background: url('./a.jpg') no-repeat;
+            background-position: center;
+            background-size: cover;
+            color: #fff;
+            height: 500px; /* Adjusted height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .showcase h1 {
+            font-size: 40px;
+            font-weight: bold; /* Corrected value */
+            text-transform: uppercase;
+        }
+
+        .showcase p {
+            font-size: 20px;
+            margin-bottom: 60px; /* Adjusted margin */
+            color: yellow;
+        }
+
+        .section {
+            padding: 40px 0; /* Corrected value */
+            text-align: center;
+            background-color: #ff8c00; /* Changed to a more visible color */
+        }
+
+        .section h4 {
+            font-size: 24px; /* Adjusted font size */
+        }
+
+        #footer {
+            background: brown;
+            color: white;
+            text-align: center;
+            padding: 10px; /* Adjusted padding */
+        }
+
+        @media only screen and (max-width: 600px) {
+            .showcase {
+                height: 300px; /* Adjusted height */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w3-bar w3-mobile">
+        <span class="branding w3-bar-item">Anonymous 9ja</span>
+        <span class="w3-right w3-mobile">
+            <a class="w3-bar-item w3-button w3-hover-green" href="https://www.hackers-arise.com">HACKERS-ARISE</a>
+            <a class="w3-bar-item w3-button w3-hover-green" href="https://hackthissite.org">HACK-this-SITE</a>
+            <a class="w3-bar-item w3-button w3-hover-green" href="https://voicetvnigeria.ng">VoiceTV9ja</a>
+            <a class="w3-bar-item w3-button w3-hover-green" href="https://darknetdiaries.com">Darknet-Diaries</a>
+            <a class="w3-bar-item w3-button w3-hover-green" href="https://tryhackme.com">TRY-HACK-ME</a>
+        </span>
+    </div>
+
+    <!-- SHOWCASE -->
+    <section class="showcase w3-animation-opacity">
+        <div class="w3-container w3-center w3-animation-opacity">
+            <h1 class="w3-text-shadow w3-animation-opacity">HELLO WORLD!!!</h1>
+            <p class="w3-animation-opacity">
+                Never do anything against conscience even if the state demands it
+            </p>
+        </div>
+    </section>
+
+    <!-- Try H4Ck M3 SECTION -->
+    <section class="section w3-orange">
+        <div class="w3-container">
+            <div class="w3-row-padding">
+                <center>
+                    <div class="w3-col m5">
+                        <h4>Do You Want To Join ANONYMOUS?</h4>
+                        <video controls width="100%" height="auto" poster="./an.gif">
+                            <source src="./We Are Anonymous.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+    <div id="footer">&#9400; 2021 DANISH KUTE</div>
+</body>
+
+</html>

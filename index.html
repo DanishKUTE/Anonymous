@@ -3,22 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OSINTID Elite UI</title>
-
-<audio autoplay loop>
-    <source src="./anon.mp3" type="audio/mpeg">
-</audio>
+<title>OSINTID Web App</title>
 
 <style>
 body {
     margin: 0;
-    font-family: "Courier New", monospace;
+    font-family: monospace;
     background: black;
     color: #00ff9f;
-    overflow-x: hidden;
 }
 
-/* MATRIX BACKGROUND */
+/* MATRIX */
 canvas {
     position: fixed;
     top: 0;
@@ -28,71 +23,26 @@ canvas {
 
 /* NAV */
 .nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,255,159,0.3);
-}
-
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    text-shadow: 0 0 20px #00ff9f;
-}
-
-/* BUTTON */
-.btn {
-    padding: 12px 30px;
-    border: 1px solid #00ff9f;
-    color: #00ff9f;
-    text-decoration: none;
-}
-
-.btn:hover {
-    background: #00ff9f;
-    color: black;
-}
-
-/* GLASS PANELS */
-.panel {
-    background: rgba(0,0,0,0.6);
-    border: 1px solid rgba(0,255,159,0.3);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    margin: 20px;
-}
-
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 15px;
+    border-bottom: 1px solid #00ff9f;
 }
 
 /* TERMINAL */
 .terminal {
-    background: black;
-    border: 1px solid #00ff9f;
     padding: 20px;
-    height: 200px;
-    overflow: hidden;
 }
 
-/* SCAN BAR */
-.scan-bar {
-    height: 5px;
-    background: #00ff9f;
-    animation: scan 2s infinite;
+.output {
+    margin-bottom: 10px;
 }
 
-@keyframes scan {
-    0% {width: 0;}
-    100% {width: 100%;}
+input {
+    background: black;
+    border: none;
+    color: #00ff9f;
+    width: 100%;
+    outline: none;
+    font-family: monospace;
 }
 </style>
 </head>
@@ -101,49 +51,19 @@ canvas {
 
 <canvas id="matrix"></canvas>
 
-<div class="nav">
-    <div>OSINTID</div>
-    <div>
-        <a href="https://github.com/DanishKUTE/OSINTID" class="btn">GitHub</a>
-    </div>
+<div class="nav">OSINTID Web Interface</div>
+
+<div class="terminal" id="terminal">
+    <div class="output">OSINTID initialized...</div>
+    <div class="output">Type 'help' to begin</div>
 </div>
 
-<div class="hero">
-    <h1>OSINTID</h1>
-    <p>Offensive Security Intelligence Framework</p>
-    <a href="https://github.com/DanishKUTE/OSINTID" class="btn">Download</a>
-</div>
-
-<div class="panel">
-    <h2>System Scan</h2>
-    <div class="scan-bar"></div>
-</div>
-
-<div class="grid">
-    <div class="panel">
-        <h3>Network Recon</h3>
-        <p>Scanning ports...</p>
-    </div>
-    <div class="panel">
-        <h3>OSINT Engine</h3>
-        <p>Collecting intelligence...</p>
-    </div>
-    <div class="panel">
-        <h3>IoT Discovery</h3>
-        <p>Detecting devices...</p>
-    </div>
-</div>
-
-<div class="panel">
-    <h2>Live Terminal</h2>
-    <div class="terminal" id="terminal"></div>
-</div>
+<input id="input" placeholder="> enter command..." autofocus />
 
 <script>
-// MATRIX RAIN
+// MATRIX
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -160,55 +80,88 @@ function draw() {
     ctx.font = fontSize + "px monospace";
 
     drops.forEach((y, i) => {
-        const text = letters[Math.floor(Math.random() * letters.length)];
+        const text = letters[Math.random()*letters.length|0];
         ctx.fillText(text, i * fontSize, y * fontSize);
 
         if (y * fontSize > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
-
         drops[i]++;
     });
 }
-
 setInterval(draw, 33);
 
-// TERMINAL TYPING
+// TERMINAL ENGINE
+const input = document.getElementById("input");
 const terminal = document.getElementById("terminal");
 
-const lines = [
-    "Initializing OSINTID...",
-    "Scanning network...",
-    "Detecting IoT devices...",
-    "Gathering OSINT...",
-    "Operation complete."
-];
+function print(text) {
+    const div = document.createElement("div");
+    div.className = "output";
+    div.textContent = text;
+    terminal.appendChild(div);
+    window.scrollTo(0, document.body.scrollHeight);
+}
 
-let i = 0;
+input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        const cmd = input.value.trim();
+        print("> " + cmd);
+        handleCommand(cmd);
+        input.value = "";
+    }
+});
 
-function typeLine() {
-    if (i < lines.length) {
-        let line = document.createElement("div");
-        terminal.appendChild(line);
+function handleCommand(cmd) {
+    const args = cmd.split(" ");
 
-        let text = lines[i];
-        let j = 0;
+    switch(args[0]) {
 
-        function typeChar() {
-            if (j < text.length) {
-                line.textContent += text[j];
-                j++;
-                setTimeout(typeChar, 30);
-            }
-        }
+        case "help":
+            print("Commands:");
+            print("scan <ip>");
+            print("osint <target>");
+            print("clear");
+            break;
 
-        typeChar();
-        i++;
-        setTimeout(typeLine, 1000);
+        case "scan":
+            if (!args[1]) return print("Usage: scan <ip>");
+            fakeScan(args[1]);
+            break;
+
+        case "osint":
+            if (!args[1]) return print("Usage: osint <target>");
+            fakeOSINT(args[1]);
+            break;
+
+        case "clear":
+            terminal.innerHTML = "";
+            break;
+
+        default:
+            print("Unknown command");
     }
 }
 
-typeLine();
+// FAKE SCAN
+function fakeScan(target) {
+    print("Scanning " + target + "...");
+
+    setTimeout(()=>print("Port 22: OPEN"), 500);
+    setTimeout(()=>print("Port 80: OPEN"), 800);
+    setTimeout(()=>print("Port 443: OPEN"), 1100);
+    setTimeout(()=>print("Scan complete."), 1500);
+}
+
+// FAKE OSINT
+function fakeOSINT(target) {
+    print("Gathering OSINT on " + target + "...");
+
+    setTimeout(()=>print("Country: Unknown"), 500);
+    setTimeout(()=>print("ISP: Hidden Network"), 800);
+    setTimeout(()=>print("Reputation: Suspicious"), 1200);
+    setTimeout(()=>print("Done."), 1500);
+}
 </script>
 
 </body>

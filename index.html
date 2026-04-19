@@ -3,16 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSINTID Elite UI</title>
 
-<title>OSINTID | Anonymous 9ja</title>
-
-<!-- Audio -->
 <audio autoplay loop>
     <source src="./anon.mp3" type="audio/mpeg">
 </audio>
-
-<!-- Icons -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 body {
@@ -20,54 +15,40 @@ body {
     font-family: "Courier New", monospace;
     background: black;
     color: #00ff9f;
+    overflow-x: hidden;
+}
+
+/* MATRIX BACKGROUND */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 /* NAV */
 .nav {
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px;
-    background: #000;
-    border-bottom: 1px solid #00ff9f;
-}
-
-.nav a {
-    color: #00ff9f;
-    margin-left: 15px;
-    text-decoration: none;
-}
-
-.nav a:hover {
-    color: white;
+    padding: 15px 30px;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,255,159,0.3);
 }
 
 /* HERO */
 .hero {
-    background: url('./a.jpg') center/cover no-repeat;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-
-    background-color: rgba(0,0,0,0.7);
-    background-blend-mode: darken;
+    padding: 100px 20px;
 }
 
 .hero h1 {
     font-size: 3rem;
-    text-shadow: 0 0 10px #00ff9f;
-}
-
-.hero p {
-    color: yellow;
+    text-shadow: 0 0 20px #00ff9f;
 }
 
 /* BUTTON */
 .btn {
-    margin-top: 20px;
-    padding: 12px 25px;
+    padding: 12px 30px;
     border: 1px solid #00ff9f;
     color: #00ff9f;
     text-decoration: none;
@@ -78,131 +59,157 @@ body {
     color: black;
 }
 
-/* SECTIONS */
-section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
+/* GLASS PANELS */
+.panel {
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(0,255,159,0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin: 20px;
 }
 
-h2 {
-    text-shadow: 0 0 5px #00ff9f;
-}
-
-/* FEATURES */
-.features {
+/* GRID */
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    border: 1px solid #00ff9f;
-    padding: 20px;
 }
 
 /* TERMINAL */
 .terminal {
-    background: #000;
+    background: black;
     border: 1px solid #00ff9f;
     padding: 20px;
+    height: 200px;
+    overflow: hidden;
 }
 
-/* VIDEO SECTION */
-.video-section {
-    text-align: center;
-    background: #111;
+/* SCAN BAR */
+.scan-bar {
+    height: 5px;
+    background: #00ff9f;
+    animation: scan 2s infinite;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #000;
-    border-top: 1px solid #00ff9f;
+@keyframes scan {
+    0% {width: 0;}
+    100% {width: 100%;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<canvas id="matrix"></canvas>
+
 <div class="nav">
-    <div><strong>Anonymous 9ja</strong></div>
+    <div>OSINTID</div>
     <div>
-        <a href="https://www.hackers-arise.com">Hackers-Arise</a>
-        <a href="https://hackthissite.org">HackThisSite</a>
-        <a href="https://darknetdiaries.com">Darknet Diaries</a>
-        <a href="https://tryhackme.com">TryHackMe</a>
+        <a href="https://github.com/DanishKUTE/OSINTID" class="btn">GitHub</a>
     </div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
+<div class="hero">
     <h1>OSINTID</h1>
-    <p>Offensive Security Intelligence & IoT Detection Framework</p>
-    <p>"Never do anything against conscience even if the state demands it"</p>
+    <p>Offensive Security Intelligence Framework</p>
+    <a href="https://github.com/DanishKUTE/OSINTID" class="btn">Download</a>
+</div>
 
-    <a href="https://github.com/DanishKUTE/OSINTID" class="btn">
-        Download v1.0
-    </a>
-</section>
+<div class="panel">
+    <h2>System Scan</h2>
+    <div class="scan-bar"></div>
+</div>
 
-<!-- FEATURES -->
-<section>
-    <h2>[ FEATURES ]</h2>
-    <div class="features">
-        <div class="card">
-            <h3>Network Recon</h3>
-            <p>Port scanning, DNS, WHOIS.</p>
-        </div>
-        <div class="card">
-            <h3>OSINT Engine</h3>
-            <p>IP intelligence & domain analysis.</p>
-        </div>
-        <div class="card">
-            <h3>IoT Discovery</h3>
-            <p>Scan and detect smart devices.</p>
-        </div>
-        <div class="card">
-            <h3>Remote Shell</h3>
-            <p>Netcat-style execution.</p>
-        </div>
+<div class="grid">
+    <div class="panel">
+        <h3>Network Recon</h3>
+        <p>Scanning ports...</p>
     </div>
-</section>
-
-<!-- COMMANDS -->
-<section>
-    <h2>[ COMMANDS ]</h2>
-    <div class="terminal">
-        <p>> python OSINTID.py --portscan 1 65535</p>
-        <p>> python OSINTID.py --dnslookup example.com</p>
-        <p>> python OSINTID.py --iot 192.168.1.0/24</p>
-        <p>> python OSINTID.py -p 9999 -l -c</p>
+    <div class="panel">
+        <h3>OSINT Engine</h3>
+        <p>Collecting intelligence...</p>
     </div>
-</section>
+    <div class="panel">
+        <h3>IoT Discovery</h3>
+        <p>Detecting devices...</p>
+    </div>
+</div>
 
-<!-- VIDEO -->
-<section class="video-section">
-    <h2>[ JOIN US ]</h2>
-    <video controls width="80%" poster="./an.gif">
-        <source src="./We Are Anonymous.mp4" type="video/mp4">
-    </video>
-</section>
+<div class="panel">
+    <h2>Live Terminal</h2>
+    <div class="terminal" id="terminal"></div>
+</div>
 
-<!-- DISCLAIMER -->
-<section>
-    <h2>[ LEGAL ]</h2>
-    <p style="color:red;">
-        For authorized penetration testing and educational use only.
-        Unauthorized use is strictly prohibited.
-    </p>
-</section>
+<script>
+// MATRIX RAIN
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-<!-- FOOTER -->
-<footer>
-    © 2026 Daniel Ishaku Ando | OSINTID
-</footer>
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ff9f";
+    ctx.font = fontSize + "px monospace";
+
+    drops.forEach((y, i) => {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, y * fontSize);
+
+        if (y * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    });
+}
+
+setInterval(draw, 33);
+
+// TERMINAL TYPING
+const terminal = document.getElementById("terminal");
+
+const lines = [
+    "Initializing OSINTID...",
+    "Scanning network...",
+    "Detecting IoT devices...",
+    "Gathering OSINT...",
+    "Operation complete."
+];
+
+let i = 0;
+
+function typeLine() {
+    if (i < lines.length) {
+        let line = document.createElement("div");
+        terminal.appendChild(line);
+
+        let text = lines[i];
+        let j = 0;
+
+        function typeChar() {
+            if (j < text.length) {
+                line.textContent += text[j];
+                j++;
+                setTimeout(typeChar, 30);
+            }
+        }
+
+        typeChar();
+        i++;
+        setTimeout(typeLine, 1000);
+    }
+}
+
+typeLine();
+</script>
 
 </body>
 </html>

@@ -1,133 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>23R0</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <audio id="songaudio" autoplay loop>
-        <source src="./anon.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-        </audio>
+<title>OSINTID | Anonymous 9ja</title>
 
+<!-- Audio -->
+<audio autoplay loop>
+    <source src="./anon.mp3" type="audio/mpeg">
+</audio>
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="./w3.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+<!-- Icons -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        .w3-bar {
-            background-color: #000;
-            color: white;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: black;
+    color: #00ff9f;
+}
 
-        .branding {
-            font-size: 20px;
-        }
+/* NAV */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: #000;
+    border-bottom: 1px solid #00ff9f;
+}
 
-        .showcase {
-            background: url('./a.jpg') no-repeat;
-            background-position: center;
-            background-size: cover;
-            color: #fff;
-            height: 500px; /* Adjusted height */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+.nav a {
+    color: #00ff9f;
+    margin-left: 15px;
+    text-decoration: none;
+}
 
-        .showcase h1 {
-            font-size: 40px;
-            font-weight: bold; /* Corrected value */
-            text-transform: uppercase;
-        }
+.nav a:hover {
+    color: white;
+}
 
-        .showcase p {
-            font-size: 20px;
-            margin-bottom: 60px; /* Adjusted margin */
-            color: yellow;
-        }
+/* HERO */
+.hero {
+    background: url('./a.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-        .section {
-            padding: 40px 0; /* Corrected value */
-            text-align: center;
-            background-color: #ff8c00; /* Changed to a more visible color */
-        }
+    background-color: rgba(0,0,0,0.7);
+    background-blend-mode: darken;
+}
 
-        .section h4 {
-            font-size: 24px; /* Adjusted font size */
-        }
+.hero h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 10px #00ff9f;
+}
 
-        #footer {
-            background: brown;
-            color: white;
-            text-align: center;
-            padding: 10px; /* Adjusted padding */
-        }
+.hero p {
+    color: yellow;
+}
 
-        @media only screen and (max-width: 600px) {
-            .showcase {
-                height: 300px; /* Adjusted height */
-            }
-        }
-    </style>
+/* BUTTON */
+.btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: 1px solid #00ff9f;
+    color: #00ff9f;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #00ff9f;
+    color: black;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    text-shadow: 0 0 5px #00ff9f;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #00ff9f;
+    padding: 20px;
+}
+
+/* TERMINAL */
+.terminal {
+    background: #000;
+    border: 1px solid #00ff9f;
+    padding: 20px;
+}
+
+/* VIDEO SECTION */
+.video-section {
+    text-align: center;
+    background: #111;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    border-top: 1px solid #00ff9f;
+}
+</style>
 </head>
 
 <body>
-    <div class="w3-bar w3-mobile">
-        <span class="branding w3-bar-item">Anonymous 9ja</span>
-        <span class="w3-right w3-mobile">
-            <a class="w3-bar-item w3-button w3-hover-green" href="https://www.hackers-arise.com">HACKERS-ARISE</a>
-            <a class="w3-bar-item w3-button w3-hover-green" href="https://hackthissite.org">HACK-this-SITE</a>
-            <a class="w3-bar-item w3-button w3-hover-green" href="https://voicetvnigeria.ng">VoiceTV9ja</a>
-            <a class="w3-bar-item w3-button w3-hover-green" href="https://darknetdiaries.com">Darknet-Diaries</a>
-            <a class="w3-bar-item w3-button w3-hover-green" href="https://tryhackme.com">TRY-HACK-ME</a>
-        </span>
+
+<!-- NAV -->
+<div class="nav">
+    <div><strong>Anonymous 9ja</strong></div>
+    <div>
+        <a href="https://www.hackers-arise.com">Hackers-Arise</a>
+        <a href="https://hackthissite.org">HackThisSite</a>
+        <a href="https://darknetdiaries.com">Darknet Diaries</a>
+        <a href="https://tryhackme.com">TryHackMe</a>
     </div>
+</div>
 
-    <!-- SHOWCASE -->
-    <section class="showcase w3-animation-opacity">
-        <div class="w3-container w3-center w3-animation-opacity">
-            <h1 class="w3-text-shadow w3-animation-opacity">HELLO WORLD!!!</h1>
-            <p class="w3-animation-opacity">
-                Never do anything against conscience even if the state demands it
-            </p>
+<!-- HERO -->
+<section class="hero">
+    <h1>OSINTID</h1>
+    <p>Offensive Security Intelligence & IoT Detection Framework</p>
+    <p>"Never do anything against conscience even if the state demands it"</p>
+
+    <a href="https://github.com/DanishKUTE/OSINTID" class="btn">
+        Download v1.0
+    </a>
+</section>
+
+<!-- FEATURES -->
+<section>
+    <h2>[ FEATURES ]</h2>
+    <div class="features">
+        <div class="card">
+            <h3>Network Recon</h3>
+            <p>Port scanning, DNS, WHOIS.</p>
         </div>
-    </section>
-
-    <!-- Try H4Ck M3 SECTION -->
-    <section class="section w3-orange">
-        <div class="w3-container">
-            <div class="w3-row-padding">
-                <center>
-                    <div class="w3-col m5">
-                        <h4>Do You Want To Join ANONYMOUS?</h4>
-                        <video controls width="100%" height="auto" poster="./an.gif">
-                            <source src="./We Are Anonymous.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </center>
-            </div>
+        <div class="card">
+            <h3>OSINT Engine</h3>
+            <p>IP intelligence & domain analysis.</p>
         </div>
-    </section>
+        <div class="card">
+            <h3>IoT Discovery</h3>
+            <p>Scan and detect smart devices.</p>
+        </div>
+        <div class="card">
+            <h3>Remote Shell</h3>
+            <p>Netcat-style execution.</p>
+        </div>
+    </div>
+</section>
 
-    <script>
-        function myFunction(id) {
-            var x = document.getElementById(id);
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-            } else {
-                x.className = x.className.replace(" w3-show", "");
-            }
-        }
-    </script>
+<!-- COMMANDS -->
+<section>
+    <h2>[ COMMANDS ]</h2>
+    <div class="terminal">
+        <p>> python OSINTID.py --portscan 1 65535</p>
+        <p>> python OSINTID.py --dnslookup example.com</p>
+        <p>> python OSINTID.py --iot 192.168.1.0/24</p>
+        <p>> python OSINTID.py -p 9999 -l -c</p>
+    </div>
+</section>
 
-    <div id="footer">&#9400; 2021 DANISH KUTE</div>
+<!-- VIDEO -->
+<section class="video-section">
+    <h2>[ JOIN US ]</h2>
+    <video controls width="80%" poster="./an.gif">
+        <source src="./We Are Anonymous.mp4" type="video/mp4">
+    </video>
+</section>
+
+<!-- DISCLAIMER -->
+<section>
+    <h2>[ LEGAL ]</h2>
+    <p style="color:red;">
+        For authorized penetration testing and educational use only.
+        Unauthorized use is strictly prohibited.
+    </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Daniel Ishaku Ando | OSINTID
+</footer>
+
 </body>
-
 </html>
